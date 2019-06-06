@@ -19,7 +19,7 @@ def crypto=UtilsKt.withV1Encryption(UtilsKt.asFileSource(transferTo), System.env
 crypto.meta("split_size", "${20000000}")
 
 def toPut = videos.listFiles().findAll {
-    "$it".matches(~'.+\\.(?:web[mp]|m(?:p4|kv|4[av])|(?:pn|jp)g|og[gva])(?:\\.[0-9]+\\.split)?$')
+    "$it".matches(~'.+\\.(?:web[mp]|m(?:p4|kv|4[av])|(?:pn|jp)g|og[gva]|zip|7z|t(?:ar(?:.gz)|gz))(?:\\.[0-9]+\\.split)?$')
 }.sort{a,b->
   return b.length()<=>a.length()
 }
