@@ -16,10 +16,10 @@ def transferTo=new File(videos,args.length>=1?args[0]:"bkup")
 transferTo.mkdirs()
 
 def crypto=UtilsKt.withV1Encryption(UtilsKt.asFileSource(transferTo), System.env.PASSWORD)
-crypto.meta("split_size", "${20000000}")
+crypto.meta("split_size", "${10000000}")
 
 def toPut = videos.listFiles().findAll {
-    "$it".matches(~'.+\\.(?:web[mp]|m(?:p4|kv|4[av])|(?:pn|jp)g|gif|og[gva]|zip|7z|t(?:ar(?:\\.gz)?|gz))(?:\\.[0-9]+\\.split)?$')
+    "$it".matches(~'.+\\.(?:web[mp]|m(?:p4|[ko]v|4[av])|(?:pn|jp)g|gif|og[gva]|zip|7z|t(?:ar(?:\\.gz)?|gz))(?:\\.[0-9]+\\.split)?$')
 }.sort{a,b->
   return b.length()<=>a.length()
 }
